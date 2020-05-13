@@ -37,7 +37,8 @@
 
 
 <script type="text/javascript">
-
+var cambiosTBLres=0;
+var lipyeartm	="Prueba";
 function GeneraTablaResumen(url,objeto){
 cambiosTBLres=cambiosTBLres+1;
 if(cambiosTBLres > 1){
@@ -45,8 +46,9 @@ if(cambiosTBLres > 1){
   table.destroy(); 
 }
 
-   $("#H6T3").text("Resumen " + lipyeartm);
-   d3.json(url, function(error, dataset) {
+   $("#tituloMap").text("Resumen " + lipyeartm);
+   
+    d3.json(url, function(error, dataset) {
       if (error) {return console.warn(error)};
     ventana=dataset.data;
     //datos = transpose([["Eventos Lineas","Impacto","Impresiones", "Valoración Local ","Valoración USD"]], getRow(dataset.data, lipyeartm, 0));
