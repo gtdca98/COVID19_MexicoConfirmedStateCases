@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html> 
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	 <title>DTJASON </title>
+   <link rel="stylesheet" type="text/css" href="leaflet/leaflet.css" />
+    <script type="text/javascript" src="leaflet/leaflet.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="css/buttons.dataTables.min.css">
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script src="js/jquery.dataTables.min.js">	</script> 
+<script src="js/datatables.min.js"></script>
+
+<script src="js/dataTables.buttons.min.js"></script>
+<script src="js/buttons.flash.min.js"></script>
+<script src="js/jszip.min.js"></script>
+<script src="js/pdfmake.min.js"></script>
+<script src="js/vfs_fonts.js"></script>
+<script src="js/buttons.html5.min.js"></script>
+<script src="js/buttons.print.min.js"></script>
+<script src="js/d3.v3.min.js"></script>
+
+
+</head>
+<body style=" position: relative;">
+
+
+
+<div  >
+			<h5 id=tituloMap>TABLA</h5>
+			<div id="tables" ></div>
+</div>
+
+
+
+<script type="text/javascript">
+
+function GeneraTablaResumen(url,objeto){
+cambiosTBLres=cambiosTBLres+1;
+if(cambiosTBLres > 1){
+   var table = $(objeto).DataTable();
+  table.destroy(); 
+}
+
+   $("#H6T3").text("Resumen " + lipyeartm);
+   d3.json(url, function(error, dataset) {
+      if (error) {return console.warn(error)};
+    ventana=dataset.data;
+    //datos = transpose([["Eventos Lineas","Impacto","Impresiones", "Valoración Local ","Valoración USD"]], getRow(dataset.data, lipyeartm, 0));
+     datosYY = getRow(ventana, lipyeartm, 0);
+     var datos= [[ "Eventos Lineas",datosYY[0][1]],["Impacto",datosYY[0][2]],["Impresiones",datosYY[0][3]],[ "Valoración Local ",datosYY[0][4]],["Valoración USD",datosYY[0][5]]];
+     
+
+  $(objeto).empty();
+  var encabezado= [{title:"Concepto"},{title:"Valor"}]
+   $(objeto).DataTable( {
+        language: {
+            decimal: '.',
+            thousands: ','
+        },
+        paging:   true,
+        ordering: true,
+        info:     true,
+      data: datos,
+      //ajax: datos,
+      dom: 't',
+      //buttons: ['copy', 'csv', 'excel'], //, 'pdf', 'print' opciones eliminadas
+      scrollY :  false,
+      scrollCollapse: false,
+      //scrollX: '100%',
+      scrollX: true,
+       autoWidth: true,
+      columns: encabezado,
+      columnDefs: [
+    {
+        targets: [1],
+        className: 'dt-body-right',
+        type: 'num',
+        render: $.fn.dataTable.render.number( ',', '.', 0 ),
+        width: '10%'
+    }
+    ] 
+        
+  } );
+
+
+});
+  
+};
+
+
+
+
+
+$(document).ready(function() {
+
+
+GeneraTablaResumen("#tables", "ResGeneralDefAMCM2018.js")
+
+} );
+
+</script>
+
+</body>
+</html>
+
+
+
