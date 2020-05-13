@@ -48,13 +48,7 @@ if(cambiosTBLres > 1){
 
    $("#tituloMap").text("Resumen " + lipyeartm);
    
-    d3.json(url, function(error, dataset) {
-      if (error) {return console.warn(error)};
-    ventana=dataset.data;
-    //datos = transpose([["Eventos Lineas","Impacto","Impresiones", "Valoración Local ","Valoración USD"]], getRow(dataset.data, lipyeartm, 0));
-     datosYY = getRow(ventana, lipyeartm, 0);
-     var datos= [[ "Eventos Lineas",datosYY[0][1]],["Impacto",datosYY[0][2]],["Impresiones",datosYY[0][3]],[ "Valoración Local ",datosYY[0][4]],["Valoración USD",datosYY[0][5]]];
-     
+ 
 
   $(objeto).empty();
   var encabezado= [{title:"Concepto"},{title:"Valor"}]
@@ -66,8 +60,8 @@ if(cambiosTBLres > 1){
         paging:   true,
         ordering: true,
         info:     true,
-      data: datos,
-      //ajax: datos,
+      //data: datos,
+      ajax: url,
       dom: 't',
       //buttons: ['copy', 'csv', 'excel'], //, 'pdf', 'print' opciones eliminadas
       scrollY :  false,
@@ -89,8 +83,6 @@ if(cambiosTBLres > 1){
   } );
 
 
-});
-  
 };
 
 
