@@ -48,11 +48,83 @@ if(cambiosTBLres > 1){
 
    $("#tituloMap").text("Resumen " + lipyeartm);
    
- 
+ var encabezado =[
+	{'title':'CVE_ENT'},
+	{'title':'NOM_EDO'},
+	{'title':'CVEGEO'},
+	{'title':'NOMGEO'},
+	{'title':'pobtot'},
+	{'title':'pobM'},
+	{'title':'pobH'},
+	{'title':'Casos Confirmados Acumulados'},
+	{'title':'Casos Confirmados Acumulados atendido en UM otro estado'},
+	{'title':'Casos Confirmados Acumulados Mujeres'},
+	{'title':'Casos Confirmados Acumulados Hombres'},
+	{'title':'Casos Confirmados Acumulados Incidencia x100000 habs'},
+	{'title':'Casos Confirmados Acumulados Incidencia x100000 hab Mujeres'},
+	{'title':'Casos Confirmados Acumulados Incidencia x100000 hab Hombres'},
+	{'title':'Defunciones Acumuladas'},
+	{'title':'Defunciones Acumuladas atendido en UM otro estado'},
+	{'title':'Defunciones Acumuladas Mujeres'},
+	{'title':'Defunciones Acumuladas Hombres'},
+	{'title':'Mortalidad Acumulada x100000 habs'},
+	{'title':'Mortalidad Acumulada x100000 hab Mujeres'},
+	{'title':'Mortalidad Acumulada x100000 hab Hombres'},
+	{'title':'Letalidad casos acumulados'},
+	{'title':'Letalidad casos acumulados Mujeres'},
+	{'title':'Letalidad casos acumulados Hombres'},
+	{'title':'Casos Activos'},
+	{'title':'Casos Activos Residentes atendido en UM estado'},
+	{'title':'Casos Activos Mujeres'},
+	{'title':'Casos Activos Hombres'},
+	{'title':'Casos Activos Incidencia x100000 habs'},
+	{'title':'Casos Activos Incidencia x100000 hab Mujeres'},
+	{'title':'Casos Activos Incidencia x100000 hab Hombres'},
+	{'title':'Defunciones Activos'},
+	{'title':'Defunciones Activos atendido en UM otro estado'},
+	{'title':'Defunciones Activos Mujeres'},
+	{'title':'Defunciones Activos Hombres'},
+	{'title':'Mortalidad Activos x100000 habs'},
+	{'title':'Mortalidad Activos x100000 hab Mujeres'},
+	{'title':'Mortalidad Activos x100000 hab Hombres'},
+	{'title':'Letalidad casos Activos'},
+	{'title':'Letalidad casos Activos Mujeres'},
+	{'title':'Letalidad casos Activos Hombres'},
+	{'title':'Casos Sospechosos'},
+	{'title':'Sospechosos atendido en UM otro estado'},
+	{'title':'Sospechosos Mujeres'},
+	{'title':'Sospechosos Hombres'},
+	{'title':'Sospechosos x100000 habs'},
+	{'title':'Sospechosos x100000 hab Mujeres'},
+	{'title':'Sospechosos x100000 hab Hombres'},
+	{'title':'Defunciones Sospechosos'},
+	{'title':'Defunciones Sospechosos atendido en UM otro estado'},
+	{'title':'Defunciones Sospechosos Mujeres'},
+	{'title':'Defunciones Sospechosos Hombres'},
+	{'title':'Mortalidad Sospechosos x100000 habs'},
+	{'title':'Mortalidad Sospechosos x100000 hab Mujeres'},
+	{'title':'Mortalidad Sospechosos x100000 hab Hombres'},
+	{'title':'Letalidad casos Sospechosos'},
+	{'title':'Letalidad casos Sospechosos Mujeres'},
+	{'title':'Letalidad casos Sospechosos Hombres'},
+	{'title':'Casos Recuperados'},
+	{'title':'Recuperados atendido en UM otro estado'},
+	{'title':'Recuperados Mujeres'},
+	{'title':'Recuperados Hombres'},
+	{'title':'Recuperados x100000 habs'},
+	{'title':'Recuperados x100000 hab Mujeres'},
+	{'title':'Recuperados x100000 hab Hombres'},
+	{'title':'Casos Negativos'},
+	{'title':'Negativos atendido en UM otro estado'},
+	{'title':'Negativos Mujeres'},
+	{'title':'Negativos Hombres'},
+	{'title':'Negativos x100000 habs'},
+	{'title':'Negativos x100000 hab Mujeres'},
+	{'title':'Negativos x100000 hab Hombres'}
+ ];
 
   $(objeto).empty();
-  //var encabezado= [{title:"col1"},{title:"col2"},{title:"col3"},{title:"col4"},{title:"col5"},{title:"col6"},
-	//	   {title:"col7"},{title:"col8"},{title:"col9"},{title:"col10"},{title:"col11"},{title:"col12"}]
+
    $(objeto).DataTable( {
         language: {
             decimal: '.',
@@ -70,7 +142,7 @@ if(cambiosTBLres > 1){
       //scrollX: '100%',
       scrollX: true,
        autoWidth: true,
-      //columns: encabezado,
+      columns: encabezado,
       columnDefs: [
     {
         targets: [1],
@@ -92,17 +164,7 @@ if(cambiosTBLres > 1){
 
 $(document).ready(function() {
 
-//GeneraTablaResumen( "DatosMunicipalesCOVIDROWS.json", "#tables")
-	
-	$('#tables').DataTable( {
-    ajax: {
-        url: 'DatosMunicipalesCOVIDROWS.json',
-        dataSrc: ''
-    },
-    columns: [ ... ]
-} );
-	
-	
+GeneraTablaResumen( "DatosMunicipalesCOVIDROWS.json", "#tables")
 
 } );
 
