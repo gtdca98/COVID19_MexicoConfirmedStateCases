@@ -92,7 +92,17 @@ if(cambiosTBLres > 1){
 
 $(document).ready(function() {
 
-GeneraTablaResumen( "DatosMunicipalesCOVIDROWS.json", "#tables")
+//GeneraTablaResumen( "DatosMunicipalesCOVIDROWS.json", "#tables")
+	
+	$('#tables').DataTable( {
+    ajax: {
+        url: 'DatosMunicipalesCOVIDROWS.json',
+        dataSrc: ''
+    },
+    columns: [ ... ]
+} );
+	
+	
 
 } );
 
