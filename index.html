@@ -51,8 +51,8 @@ if(cambiosTBLres > 1){
  
 
   $(objeto).empty();
-  var encabezado= [{title:"col1"},{title:"col2"},{title:"col3"},{title:"col4"},{title:"col5"},{title:"col6"},
-		   {title:"col7"},{title:"col8"},{title:"col9"},{title:"col10"},{title:"col11"},{title:"col12"}]
+  //var encabezado= [{title:"col1"},{title:"col2"},{title:"col3"},{title:"col4"},{title:"col5"},{title:"col6"},
+	//	   {title:"col7"},{title:"col8"},{title:"col9"},{title:"col10"},{title:"col11"},{title:"col12"}]
    $(objeto).DataTable( {
         language: {
             decimal: '.',
@@ -70,7 +70,7 @@ if(cambiosTBLres > 1){
       //scrollX: '100%',
       scrollX: true,
        autoWidth: true,
-      columns: encabezado,
+      //columns: encabezado,
       columnDefs: [
     {
         targets: [1],
@@ -92,7 +92,7 @@ if(cambiosTBLres > 1){
 
 $(document).ready(function() {
 
-GeneraTablaResumen( "ResGeneralDefAMCM2018.js", "#tables")
+GeneraTablaResumen( "DatosMunicipalesCOVIDCOL", "#tables")
 
 } );
 
